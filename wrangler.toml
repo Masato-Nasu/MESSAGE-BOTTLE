@@ -1,0 +1,21 @@
+name = "message-bottle"
+main = "worker.mjs"
+compatibility_date = "2026-11-06"
+
+[assets]
+directory = "./dist"
+binding = "ASSETS"
+run_worker_first = ["/api/*"]
+
+[triggers]
+crons = ["* * * * *"]
+
+[vars]
+LINE_OFFICIAL_ID = "@REPLACE_ME"
+OPENAI_MODEL = "gpt-5-mini"
+
+[[d1_databases]]
+binding = "DB"
+database_name = "message-bottle"
+database_id = "00000000-0000-0000-0000-000000000000"
+migrations_dir = "migrations"

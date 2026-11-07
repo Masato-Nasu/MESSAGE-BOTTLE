@@ -1,0 +1,119 @@
+<!doctype html>
+<html lang="ja">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="theme-color" content="#102f33">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="description" content="ネットの海に、ボトルを流す。">
+<link rel="icon" href="bottle.svg" type="image/svg+xml">
+<link rel="stylesheet" href="style.css">
+<link rel="stylesheet" href="shore.css">
+<title>MESSAGE BOTTLE</title>
+<script type="module" src="app.js"></script>
+</head>
+<body>
+<main>
+  <header><span class="mark"><img src="bottle.svg" alt=""> MESSAGE BOTTLE</span><span id="badge">読み込み中</span></header>
+  <section class="intro">
+    <h1>ネットの海に、<br>ボトルを流す。</h1>
+    <p>手紙をひとつ。いつか、拾い主から返事が届きます。</p>
+  </section>
+  <div class="shore" id="shore">
+    <svg class="scene" viewBox="0 0 640 280" preserveAspectRatio="xMidYMid slice" aria-hidden="true">
+      <defs>
+        <linearGradient id="sky" x2="0" y2="1">
+          <stop stop-color="#142f40"/><stop offset=".58" stop-color="#567471"/><stop offset="1" stop-color="#c19c77"/>
+        </linearGradient>
+        <radialGradient id="sunlight">
+          <stop stop-color="#f5cf94" stop-opacity=".52"/><stop offset="1" stop-color="#f5cf94" stop-opacity="0"/>
+        </radialGradient>
+        <linearGradient id="sea" x2="0" y2="1">
+          <stop stop-color="#324d54"/><stop offset=".6" stop-color="#467a78"/><stop offset="1" stop-color="#87a391"/>
+        </linearGradient>
+        <linearGradient id="sand" x2=".1" y2="1">
+          <stop stop-color="#565f52"/><stop offset=".23" stop-color="#887f65"/><stop offset="1" stop-color="#bb9d76"/>
+        </linearGradient>
+        <linearGradient id="glass" x2="1" y2=".12">
+          <stop stop-color="#183c37" stop-opacity=".9"/><stop offset=".22" stop-color="#4d8070" stop-opacity=".62"/>
+          <stop offset=".51" stop-color="#b8d4b4" stop-opacity=".29"/><stop offset=".76" stop-color="#4f8372" stop-opacity=".65"/>
+          <stop offset="1" stop-color="#224a40" stop-opacity=".91"/>
+        </linearGradient>
+        <linearGradient id="paper-roll" x2="1" y2=".08">
+          <stop stop-color="#94714c"/><stop offset=".32" stop-color="#f2dbad"/><stop offset=".68" stop-color="#e8c38d"/><stop offset="1" stop-color="#ab8155"/>
+        </linearGradient>
+        <linearGradient id="cork-fill" x2="1" y2="0">
+          <stop stop-color="#81573d"/><stop offset=".45" stop-color="#c39a66"/><stop offset="1" stop-color="#906446"/>
+        </linearGradient>
+        <path id="glass-outline" d="M-12 3H12V24C12 32 30 33 30 49V91Q30 100 21 102Q0 106-21 102Q-30 100-30 91V49C-30 33-12 32-12 24Z"/>
+      </defs>
+      <path fill="url(#sky)" d="M0 0h640v280H0z"/>
+      <ellipse cx="476" cy="82" rx="132" ry="89" fill="url(#sunlight)"/>
+      <circle cx="476" cy="76" r="20" fill="#f5d6a1"/>
+      <path fill="#29484c" opacity=".45" d="M0 110V99q45-9 83-5t82 8l41 8Zm640 0V98q-56-8-107 2l-52 10Z"/>
+      <path fill="url(#sea)" d="M0 110h640v170H0z"/>
+      <path d="M0 111h640" stroke="#d2af8b" opacity=".45"/>
+      <g class="water-light" fill="none" stroke-linecap="round">
+        <path d="M12 124q34-3 75-2m26 11h35m45-14h79m39 9 44-1m180-9h54m-26 22h56m-585 15q35-5 77-4m89-5q46-4 97 1m20 26q53-2 101-12m81 4 66-13m-379 38q63-2 111 7m121-7q43-4 79-15M8 188q50-11 99-9" stroke="#e2e7c4" opacity=".28"/>
+        <path d="M455 117h43m-63 7h76m-56 8h43m-70 10h79m-92 11h77m-61 11h45" stroke="#f8d4a0" opacity=".46"/>
+      </g>
+      <path fill="url(#sand)" d="M0 233q104-32 219-15t214 3q115-16 207-36v95H0z"/>
+      <path d="M0 263q134-29 224-13t192 2q123-20 224-42" stroke="#d2b28a" fill="none" opacity=".28" stroke-width="11"/>
+      <g class="wash">
+        <path d="M-32 236q124-33 252-17t209 1q114-14 244-42l-10-15q-129 28-238 39t-209-1Q92 184-32 216Z" fill="#b3c5a9" opacity=".32"/>
+        <path d="M-32 236q124-33 252-17t209 1q114-14 244-42" fill="none" stroke="#e1e7c9" stroke-width="2.5" stroke-linecap="round"/>
+        <path d="M-22 229q89-26 177-19m69 3q104 15 173 7m79-12q90-13 155-28" fill="none" stroke="#edf0d3" stroke-width="1.5" opacity=".62" stroke-linecap="round"/>
+      </g>
+      <ellipse class="bottle-shadow" cx="335" cy="229" rx="37" ry="7" fill="#172e2b" opacity=".36"/>
+      <g class="bottle">
+        <g class="bottle-float">
+          <use href="#glass-outline" fill="url(#glass)" stroke="#d7dfbd" stroke-width="1.4"/>
+          <g class="note-roll">
+            <rect x="-8" y="40" width="16" height="49" rx="4" fill="url(#paper-roll)"/>
+            <ellipse cx="0" cy="42" rx="7" ry="2.6" fill="#f3d7a5"/>
+            <path d="M-4 44v38m8-35v35" stroke="#ad8359" fill="none" opacity=".45"/>
+          </g>
+          <path d="M-7 13v13q0 8-11 13-5 3-5 10v35m2 7q16 5 37 2M18 41q5 3 5 13v25" fill="none" stroke="#edf1d4" stroke-linecap="round" stroke-width="2" opacity=".49"/>
+          <path d="M-14 0h28v8h-28z" fill="#8eae96" stroke="#dce8ca" stroke-width="1.4"/>
+          <path d="M-11 5h22" stroke="#ebeed6" stroke-linecap="round" opacity=".7"/>
+          <g class="cork">
+            <path d="M-10-16h20L8 1H-8Z" fill="url(#cork-fill)" stroke="#6d4c37" stroke-width=".6"/>
+            <ellipse cy="-16" rx="10" ry="2.4" fill="#c8a36e"/>
+            <path d="m-6-12 2 1m8-1 2 1m-4 6 3 1m-9-2 2 1" stroke="#6e4a36" opacity=".46" stroke-linecap="round"/>
+          </g>
+        </g>
+      </g>
+      <path class="bottle-wake" d="M333 216q18 2 34-2m-6-9q14 1 27-3m-2-9 18-2" fill="none" stroke="#ecedcf" stroke-width="1.4" stroke-linecap="round"/>
+    </svg>
+    <div class="paper" aria-hidden="true"><span>差出人より</span><p id="animated-letter"></p></div>
+    <div class="scene-caption" aria-hidden="true">ネットの海</div>
+  </div>
+  <form id="compose">
+    <label for="letter">手紙</label>
+    <textarea id="letter" name="letter" placeholder="気になる言葉や、手紙を。" rows="4" required></textarea>
+    <fieldset>
+      <legend>いつ返事がほしいですか</legend>
+      <div class="choices" id="choices"></div>
+    </fieldset>
+    <div id="api-key-section" class="api-key" hidden>
+      <label for="api-key">OpenAI APIキー</label>
+      <input id="api-key" type="password" placeholder="sk-…" maxlength="512" autocomplete="off" autocapitalize="none" spellcheck="false" aria-describedby="api-key-note">
+      <p class="hint" id="api-key-note">この手紙の返事に使うキーです。返信を作るまでサーバーで暗号化して保管します。API利用料はキーの持ち主にかかります。</p>
+    </div>
+    <button class="primary" id="launch" type="submit" disabled>海に流す <span aria-hidden="true">↗</span></button>
+    <p class="hint" id="hint">拾い主はAIが演じます。返信を作るため、手紙はOpenAIに送られます。</p>
+  </form>
+  <section class="status" id="status" hidden aria-live="polite">
+    <h2 id="status-title"></h2><p id="status-detail"></p>
+    <div id="pairing" hidden>
+      <p class="pair-code" id="pair-code"></p>
+      <button class="secondary" type="button" id="copy-code">コードをコピー</button>
+      <a id="open-line" target="_blank" rel="noopener noreferrer">LINE公式アカウントを開く ↗</a>
+    </div>
+    <div id="sample" hidden><p id="sample-letter"></p><a id="sample-link" target="_blank" rel="noopener noreferrer"></a><p class="hint">拾い主より · 試用版の見本</p></div>
+    <button class="secondary" type="button" id="again" hidden>もう一本流す</button>
+  </section>
+  <footer>MESSAGE BOTTLE</footer>
+</main>
+</body>
+</html>

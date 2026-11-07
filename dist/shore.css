@@ -1,0 +1,151 @@
+.shore {
+  position: relative;
+  overflow: hidden;
+  isolation: isolate;
+  border: 1px solid var(--line);
+  border-radius: 13px;
+  background: #365858;
+}
+
+.scene {
+  display: block;
+  width: 100%;
+  height: auto;
+  aspect-ratio: 16 / 7;
+}
+
+.scene-caption {
+  position: absolute;
+  bottom: 9px;
+  left: 13px;
+  font-size: 10px;
+  letter-spacing: .17em;
+  color: #f3e9d1;
+  background: #243e3bbd;
+  border-radius: 3px;
+  padding: 3px 6px;
+}
+
+.bottle { transform: translate(308px, 132px) rotate(-18deg); }
+.note-roll, .cork, .bottle-wake { opacity: 0; }
+.water-light { animation: shimmer 5s ease-in-out infinite alternate; }
+.wash { animation: shore-lap 6s ease-in-out infinite; }
+
+.paper {
+  position: absolute;
+  left: 48.125%;
+  top: 47.143%;
+  width: min(210px, 55%);
+  padding: 9px 13px;
+  overflow: hidden;
+  pointer-events: none;
+  opacity: 0;
+  border: 1px solid #a68b66;
+  border-radius: 2px;
+  color: #463b30;
+  background: linear-gradient(110deg, #ecd4a8, #f5e3be 48%, #ddbc8c);
+  box-shadow: 0 5px 12px #152e32a0;
+  transform-origin: center bottom;
+}
+
+.paper span {
+  display: block;
+  border-bottom: 1px solid #a98b6175;
+  padding-bottom: 2px;
+  font-size: 9px;
+  letter-spacing: .12em;
+}
+
+.paper p {
+  margin-top: 3px;
+  max-height: 2.65em;
+  overflow: hidden;
+  white-space: pre-wrap;
+  overflow-wrap: anywhere;
+  font-size: 12px;
+  line-height: 1.32;
+}
+
+.playing { --voyage: 12s; }
+.playing .paper { animation: seal-paper var(--voyage) both; }
+.playing .paper > * { animation: fade-ink var(--voyage) both; }
+.playing .note-roll { animation: slip-inside var(--voyage) both; }
+.playing .cork { animation: close-cork var(--voyage) both; }
+.playing .wash { animation: carry-wave var(--voyage) both; }
+.playing .bottle { animation: drift-out var(--voyage) cubic-bezier(.38, .16, .62, .84) both; }
+.playing .bottle-float { animation: float-on-wave 3.7s 4.85s ease-in-out infinite; }
+.playing .bottle-shadow { animation: leave-sand var(--voyage) both; }
+.playing .bottle-wake { animation: leave-wake var(--voyage) both; }
+
+@keyframes shimmer {
+  from { transform: translateX(-4px); opacity: .55; }
+  to { transform: translateX(5px); opacity: 1; }
+}
+@keyframes shore-lap {
+  50% { transform: translate(5px, 5px); opacity: .77; }
+}
+@keyframes seal-paper {
+  0% { opacity: 0; transform: translate(-50%, -130%) rotate(-7deg); }
+  5%, 12.8% { opacity: 1; transform: translate(-50%, -120%) rotate(-4deg); }
+  18.4% { opacity: 1; transform: translate(-50%, -117%) rotate(-18deg) scale(.12, .77); border-radius: 24%; }
+  22% { opacity: 1; transform: translate(-50%, -98%) rotate(-18deg) scale(.10, .69); border-radius: 28%; }
+  25.5%, 100% { opacity: 0; transform: translate(-38%, 0) rotate(-18deg) scale(.09, .48); }
+}
+@keyframes fade-ink {
+  0%, 12.8% { opacity: 1; }
+  17%, 100% { opacity: 0; }
+}
+@keyframes slip-inside {
+  0%, 22.7% { opacity: 0; transform: translateY(-36px) scaleY(.5); transform-origin: 0 40px; }
+  26.9%, 100% { opacity: .93; transform: translateY(0) scaleY(1); }
+}
+@keyframes close-cork {
+  0%, 23.4% { opacity: 0; transform: translate(0, -30px) rotate(-11deg); }
+  26.2% { opacity: 1; transform: translate(0, -22px) rotate(-8deg); }
+  31.2%, 100% { opacity: 1; transform: translate(0, 0); }
+}
+@keyframes carry-wave {
+  0%, 30.5% { transform: translateY(-2px); opacity: .77; }
+  40.4% { transform: translate(4px, 12px); opacity: .95; }
+  70.9% { transform: translate(11px, -9px); opacity: .82; }
+  87.5% { transform: translate(16px, -3px); opacity: .84; }
+  100% { transform: translate(18px, -6px); opacity: .82; }
+}
+@keyframes drift-out {
+  0%, 40.4% { transform: translate(308px, 132px) rotate(-18deg) scale(1); opacity: 1; }
+  48.7% { transform: translate(308px, 146px) rotate(-32deg) scale(.97); }
+  55.6% { transform: translate(312px, 140px) rotate(-48deg) scale(.89); }
+  65.3% { transform: translate(315px, 178px) rotate(-65deg) scale(.79); }
+  73.7% { transform: translate(345px, 148px) rotate(-70deg) scale(.64); }
+  82% { transform: translate(359px, 163px) rotate(-64deg) scale(.52); opacity: 1; }
+  88.9% { transform: translate(390px, 143px) rotate(-77deg) scale(.36); }
+  94.5% { transform: translate(407px, 148px) rotate(-74deg) scale(.26); }
+  100% { transform: translate(436px, 130px) rotate(-77deg) scale(.17); opacity: .12; }
+}
+@keyframes float-on-wave {
+  0%, 100% { transform: rotate(0); }
+  25% { transform: rotate(-6deg); }
+  70% { transform: rotate(5deg); }
+}
+@keyframes leave-sand {
+  0%, 44.5% { opacity: .36; }
+  66.7%, 100% { opacity: 0; }
+}
+@keyframes leave-wake {
+  0%, 51.5% { opacity: 0; transform: translate(0, 1px); }
+  66.7% { opacity: .58; transform: translate(9px, 3px); }
+  91.7%, 100% { opacity: 0; transform: translate(53px, -24px); }
+}
+
+@media (max-width: 440px) {
+  .paper { padding: 5px 9px; }
+  .paper p { font-size: 11px; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .water-light, .wash, .playing .paper, .playing .paper > *, .playing .note-roll,
+  .playing .cork, .playing .wash, .playing .bottle, .playing .bottle-shadow,
+  .playing .bottle-float, .playing .bottle-wake { animation: none; }
+  .playing .paper { opacity: 1; transform: translate(-50%, -110%); }
+  .playing .cork, .playing .note-roll { opacity: 1; }
+}
