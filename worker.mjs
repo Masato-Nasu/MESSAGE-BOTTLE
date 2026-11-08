@@ -163,7 +163,11 @@ async function searchReply(message, env, apiKey) {
   const cited = texts.find((part) => part.annotations?.some((annotation) => annotation.type === 'url_citation' && /^https:\/\//i.test(annotation.url)));
   if (!cited) throw new Error('AI_NO_SOURCE');
   const reference = cited.annotations.find((annotation) => annotation.type === 'url_citation' && /^https:\/\//i.test(annotation.url));
-  const text = cited.text.replace(/\[([^\]]+)\]\(https?:\/\/[^)]+\)/g, '').replace(/https?:\/\/[^\s）)]+/g, '').trim();
+  const text = cited.text
+    .replace(/\[([^\]]+)\]\(https?:\/\/[^)]+\)/g, '')
+    .replace(/https?:\/\/[^\s）)]+/g, '')
+    .replace(/[ \t　]*(?:(?:\([ \t　]*\)|（[ \t　]*）)[ \t　]*)+(?=[。．.!！?？\r\n]|$)/g, '')
+    .trim();
   if (!text || (longLetter && text.length < minimum) ||
       text.length > (longLetter ? 2600 : 700) || reference.url.length > 1700) {
     throw new Error('AI_REPLY_LENGTH');
